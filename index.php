@@ -10,7 +10,7 @@ if (!isset($category_id)) {
     }
 }
 // Get name for selected category
-$queryCategory = 'SELECT * FROM categories
+$queryCategory = 'SELECT * FROM categories_guitar1
                   WHERE categoryID = :category_id';
 $statement1 = $db->prepare($queryCategory);
 $statement1->bindValue(':category_id', $category_id);
@@ -21,7 +21,7 @@ $statement1->closeCursor();
 
 
 // Get all categories
-$query = 'SELECT * FROM categories
+$query = 'SELECT * FROM categories_guitar1
                        ORDER BY categoryID';
 $statement = $db->prepare($query);
 $statement->execute();
@@ -29,10 +29,10 @@ $categories = $statement->fetchAll();
 $statement->closeCursor();
 
 // Get products for selected category
-$queryProducts = 'SELECT * FROM products
+$queryProducts = 'SELECT * FROM products_guitar1
                   WHERE categoryID = :category_id
                   ORDER BY productID';
-$statement3 = $db->prepare($queryProducts);
+$statement3 = $db->prepare($queryProducts_guitar1);
 $statement3->bindValue(':category_id', $category_id);
 $statement3->execute();
 $products = $statement3->fetchAll();
@@ -55,10 +55,10 @@ $statement3->closeCursor();
 
     <aside>
         <!-- display a list of categories -->
-        <h2>Categories</h2>
+        <h2>Categories_guitar1</h2>
         <nav>
         <ul>
-            <?php foreach ($categories as $category) : ?>
+            <?php foreach ($categories_guitar1 as $category) : ?>
             <li><a href=".?category_id=<?php echo $category['categoryID']; ?>">
                     <?php echo $category['categoryName']; ?>
                 </a>
@@ -79,7 +79,7 @@ $statement3->closeCursor();
                 <th>&nbsp;</th>
             </tr>
 
-            <?php foreach ($products as $product) : ?>
+            <?php foreach ($products_guitar1 as $product) : ?>
             <tr>
                 <td><?php echo $product['productCode']; ?></td>
                 <td><?php echo $product['productName']; ?></td>
