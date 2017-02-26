@@ -6,7 +6,7 @@ $query = 'SELECT * FROM categories_guitar1
                        ORDER BY categoryID';
 $statement = $db->prepare($query);
 $statement->execute();
-$categories = $statement->fetchAll();
+$categories_guitar1 = $statement->fetchAll();
 $statement->closeCursor();
 ?>
 <!DOCTYPE html>
