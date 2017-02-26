@@ -1,11 +1,11 @@
 <?php
 require('database.php');
 $query = 'SELECT *
-          FROM categories
+          FROM categories_guitar1
           ORDER BY categoryID';
 $statement = $db->prepare($query);
 $statement->execute();
-$categories = $statement->fetchAll();
+$categories_guitar1 = $statement->fetchAll();
 $statement->closeCursor();
 ?>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@ $statement->closeCursor();
 
             <label>Category:</label>
             <select name="category_id">
-            <?php foreach ($categories as $category) : ?>
+            <?php foreach ($categories_guitar1 as $category) : ?>
                 <option value="<?php echo $category['categoryID']; ?>">
                     <?php echo $category['categoryName']; ?>
                 </option>
