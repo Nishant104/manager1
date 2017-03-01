@@ -7,7 +7,7 @@ $category_id = filter_input(INPUT_POST, 'category_id', FILTER_VALIDATE_INT);
 
 // Delete the product from the database
 if ($product_id != false && $category_id != false) {
-    $query = 'DELETE FROM products_guitar1
+    $query = 'DELETE FROM guitar1_categories 
               WHERE productID = :product_id';
     $statement = $db->prepare($query);
     $statement->bindValue(':product_id', $product_id);
@@ -16,4 +16,4 @@ if ($product_id != false && $category_id != false) {
 }
 
 // Display the Product List page
-include('index.php');
+include('categories_list.php');
