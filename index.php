@@ -32,7 +32,7 @@ $statement->closeCursor();
 $queryProducts = 'SELECT * FROM products_guitar1
                   WHERE categoryID = :category_id
                   ORDER BY productID';
-$statement3 = $db->prepare($queryProducts_guitar1);
+$statement3 = $db->prepare ($queryProducts);
 $statement3->bindValue(':category_id', $category_id);
 $statement3->execute();
 $products = $statement3->fetchAll();
