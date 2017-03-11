@@ -1,8 +1,26 @@
 <?php
 require_once('database.php');
 
+// Get category ID
+ if (!isset ($category_id) {
+   $category_id = filter_input(INPUT_GET, 'category_id',
+                               FILTER_VALIDATE_INT);
+   if category_id == NULL $category_id == FALSE) {
+     $category_id = 1;
+     
+   }
+ 
+ }
+     
+  // the name of the selected category 
+     $querycateogy = 'SELECT * FROM categories_guitar1
+                      WHERE categoryID = :category_id';
+     $statement1 = $db->prepare($queryCategory);
+     $statement1->bindValue(':category_id', $category_id');
+     $statement->excecute();
+
 // Get all categories
-$query = 'SELECT * FROM categories_guitar1
+$queryAllCategories = 'SELECT * FROM categories_guitar1
                        ORDER BY categoryID';
 $statement = $db->prepare($query);
 $statement->execute();
