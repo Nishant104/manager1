@@ -18,14 +18,29 @@ require_once('database.php');
      $statement1 = $db->prepare($queryCategory);
      $statement1->bindValue(':category_id', $category_id');
      $statement->excecute();
+     $category = $statement1->fetch();
+     $category_name = $category['categoryName'];
+     $statement1->closeCursor();
+     
 
 // Get all categories
 $queryAllCategories = 'SELECT * FROM categories_guitar1
                        ORDER BY categoryID';
-$statement = $db->prepare($query);
+$statement = $db->prepare($queryAllCategories);
 $statement->execute();
-$categories_guitar1 = $statement->fetchAll();
-$statement->closeCursor();
+$categories_guitar1 = $statement2->fetchAll();
+$statement2->closeCursor();
+
+// Get products for selected category
+$queryProducts = 'Select * FROM products
+               WHERE categoryID  = :category_id             
+               ORDER BY productID';
+               
+ $statement3 = $db->prepare($queryProducts);
+ $statement3->bindValue(':category_id'; $category_id);
+ $statement3->execute();
+ $product_guitar1 = $statement3->fetchAll();
+ $statement3->closeCursor();
 ?>
 <!DOCTYPE html>
 <html>
