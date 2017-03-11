@@ -39,7 +39,7 @@ $queryProducts = 'Select * FROM products
  $statement3 = $db->prepare($queryProducts);
  $statement3->bindValue(':category_id'; $category_id);
  $statement3->execute();
- $product_guitar1 = $statement3->fetchAll();
+ $products = $statement3->fetchAll();
  $statement3->closeCursor();
 ?>
 <!DOCTYPE html>
